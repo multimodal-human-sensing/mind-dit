@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Mind-DiT</title>
+    <meta
+      name="description"
+      content="Mind-DiT is an instrument for the mind's eye. Put on an EEG headset, look at something, and it paints a new image of what your brain saw."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Advancing Non-Invasive Brain-to-Image Synthesis via Multimodal Diffusion Architectures" />
+    <meta
+      property="og:description"
+      content="Paint with what you see: images generated directly from the EEG recorded while a person views an object."
+    />
+    <meta property="og:image" content="https://multimodal-human-sensing.github.io/mind-dit/media/figures/architecture.png" />
+    <meta property="og:url" content="https://multimodal-human-sensing.github.io/mind-dit/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#f3f5f4" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <style>
+      html { background: #f3f5f4; }
+      body { opacity: 0; animation: page-failsafe 0s 4s forwards; }
+      html[data-ready] body { opacity: 1; transition: opacity 0.4s ease; }
+      html:not([data-ready]) body * { animation-play-state: paused; }
+      @keyframes page-failsafe { to { opacity: 1; } }
+    </style>
+    <noscript><style>body { opacity: 1; }</style></noscript>
+    <script type="module" crossorigin src="./assets/index-CdeQVNzE.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-c4JuYB4R.css">
+  </head>
+
+  <body>
+    <a class="skip-link" href="#overview">Skip to content</a>
+
+    <header class="topbar" data-scrolled="false">
+      <div class="topbar__inner">
+        <a class="topbar__brand" href="#top" aria-label="Back to top"><img class="topbar__logo" src="./favicon.svg" alt="" width="34" height="34" /></a>
+        <nav class="topbar__nav" aria-label="Sections">
+          <a href="#overview" data-priority>Overview</a>
+          <a href="#how">How It Works</a>
+          <a href="#method" data-priority>Architecture</a>
+          <a href="#painted" data-priority>Results</a>
+          <a href="#results">Benchmarks</a>
+          <a href="#cite" data-priority>Cite</a>
+        </nav>
+      </div>
+      <div class="progress" aria-hidden="true"></div>
+    </header>
+
+    <main>
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero__stage" data-hero-stage>
+          <canvas class="hero__canvas" aria-label="A translucent head with the brain inside: EEG activity travels from the viewed photo through the cortex and becomes the reconstructed image"></canvas>
+          <div class="hero__labels" data-hero-labels aria-hidden="true">
+            <span data-anchor="viewed">Viewed Image</span>
+            <span data-anchor="eeg">EEG Spatio-Temporal Encoding</span>
+            <span data-anchor="recon">Reconstructed Image</span>
+          </div>
+          <div class="hero__tracker" data-hero-tracker data-anchor-card="tracker" aria-live="polite">
+            <div class="tracker__object">
+              <span class="tracker__label">Reconstructed object</span>
+              <b class="tracker__name" data-caption-name>lionfish</b>
+            </div>
+            <ol class="tracker__stages">
+              <li data-stage="viewing"><span>Viewing</span><i></i></li>
+              <li data-stage="decoding"><span>Decoding</span><i></i></li>
+              <li data-stage="reconstructed"><span>Reconstructed</span><i></i></li>
+            </ol>
+          </div>
+          <div class="instrument" aria-label="Example decoding session" hidden>
+            <div class="instrument__head">
+              <span class="instrument__rec"><b aria-hidden="true"></b>EEG</span>
+              <span data-instrument-step>decoding</span>
+            </div>
+            <canvas class="instrument__eeg" data-eeg aria-hidden="true"></canvas>
+            <div class="instrument__out" data-instrument-out>
+              <div class="tile" data-instrument-tile role="img" aria-label="Mind-DiT generation: lionfish"></div>
+            </div>
+            <div class="instrument__foot">
+              <span data-instrument-name>lionfish</span>
+              <span>painted by Mind-DiT</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__copy wrap">
+          <h1 class="hero__heading" id="hero-title" data-subtitle></h1>
+          <div class="hero__authors" data-authors></div>
+        </div>
+      </section>
+
+      <section class="band" id="overview" aria-labelledby="overview-title">
+        <div class="wrap overview">
+          <div class="overview__main">
+            <h2 id="overview-title">Research Overview</h2>
+            <p class="overview__lede" data-overview-lede></p>
+            <ol class="overview__points" data-overview-points></ol>
+          </div>
+          <div class="overview__results">
+            <h3 class="overview__results-title">Key Results</h3>
+            <dl class="stats" data-facts></dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="band band--sunken" id="how" aria-labelledby="how-title">
+        <div class="wrap">
+          <div class="band__head">
+            <h2 id="how-title">From a Brain Signal To A Finished Image In Three Steps</h2>
+            <p class="lede">Every image on this page was painted from EEG alone. The system never sees the photo the person was looking at.</p>
+          </div>
+          <ol class="how">
+            <li class="how__step">
+              <span class="how__num">01</span>
+              <h3 class="how__title">Look</h3>
+              <p class="how__text">A person looks at an object while an EEG headset records their brain activity.</p>
+            </li>
+            <li class="how__step">
+              <span class="how__num">02</span>
+              <h3 class="how__title">Decode</h3>
+              <p class="how__text">A spatio-temporal encoder reads the recording. Adaptive Identity Evolution then tunes it to the individual, so new users can be enrolled without retraining the model.</p>
+            </li>
+            <li class="how__step">
+              <span class="how__num">03</span>
+              <h3 class="how__title">Dream</h3>
+              <p class="how__text">A diffusion transformer treats the brain signal and the image as one sequence and paints the picture from pure noise.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="band" id="method" aria-labelledby="method-title">
+        <div class="wrap">
+          <div class="band__head">
+            <h2 id="method-title">Inside Mind-DiT</h2>
+            <p class="lede">Three modules take a user's raw EEG all the way to a generated image.</p>
+          </div>
+          <div class="pipeline" data-pipeline>
+            <div class="pipeline__sticky">
+              <div class="pipeline__diagram" data-pipeline-diagram></div>
+            </div>
+            <ol class="pipeline__steps" data-pipeline-steps></ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="band band--sunken" id="painted" aria-labelledby="painted-title">
+        <div class="wrap">
+          <div class="band__head">
+            <h2 id="painted-title">What They Saw, Next To What Their Brain Painted</h2>
+            <p class="lede">These are held-out test images that Mind-DiT never saw during training. Each card turns from the photo the participant saw to the image Mind-DiT painted from their EEG.</p>
+          </div>
+          <div class="ring-stage" data-ring>
+            <div class="ring-scene" data-ring-scene tabindex="0" role="group" aria-label="Six held-out examples on a rotating ring">
+              <div class="ring-floor" aria-hidden="true"></div>
+              <div class="ring" data-ring-track></div>
+            </div>
+            <div class="ring-side">
+              <span class="viewer__label">Now showing</span>
+              <h3 class="viewer__name" data-compare-name>lionfish</h3>
+              <p class="viewer__note">It isn't a perfect mind reader. Sometimes it paints a different object, but even those images come out clear and plausible, closer to an interpretation than to noise.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="band" id="gallery" aria-labelledby="gallery-title">
+        <div class="wrap">
+          <div class="band__head">
+            <h2 id="gallery-title">Held-out Test Trials</h2>
+            <p class="lede">Top: the photo the participant saw (GT). Bottom: Mind-DiT's reconstruction from their EEG alone.</p>
+          </div>
+          <figure class="trials">
+            <div class="trials__frame">
+              <img src="./media/figures/final_figure.png" width="2058" height="706" loading="lazy" alt="Six pairs of images. Top row: photos shown to participants (lionfish, pufferfish, forklift, pufferfish, coconut, cello). Bottom row: the matching Mind-DiT generations from EEG." />
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <section class="band band--sunken" id="results" aria-labelledby="results-title">
+        <div class="wrap">
+          <div class="band__head">
+            <h2 id="results-title">Ahead Of Prior Methods On Both Benchmarks</h2>
+            <p class="lede">Average over all participants. Classification uses top-1 accuracy. Reconstruction uses two-way identification, where the generated image has to pick its true photo out of a pair.</p>
+          </div>
+          <div class="results" data-results></div>
+        </div>
+      </section>
+
+      <section class="band" id="acknowledgements" aria-labelledby="ack-title">
+        <div class="wrap">
+          <div class="band__head">
+            <h2 id="ack-title">Acknowledgements</h2>
+          </div>
+          <div class="ack-row">
+            <div class="ack-card">
+              <img src="./media/brand/nsf.png" alt="U.S. National Science Foundation" width="224" height="225" loading="lazy" decoding="async" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="band band--sunken" id="cite" aria-labelledby="cite-title">
+        <div class="wrap">
+          <div class="band__head">
+            <h2 id="cite-title">Citing This Work</h2>
+            <p class="lede">If you use or build upon this work, please cite the corresponding publication(s) below.</p>
+          </div>
+          <div class="refs" data-acknowledgements></div>
+        </div>
+      </section>
+    </main>
+
+  </body>
+</html>
